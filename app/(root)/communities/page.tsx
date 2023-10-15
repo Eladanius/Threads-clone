@@ -5,14 +5,14 @@ import Searchbar from '@/components/shared/Searchbar';
 import Pagination from '@/components/shared/Pagination';
 import CommunityCard from '@/components/cards/CommunityCard';
 
-import { fetchUser } from '@/lib/actions/user.actions';
+import { FetchUser } from '@/lib/actions/user.actions';
 import { fetchCommunities } from '@/lib/actions/community.actions';
 
 async function Page({ searchParams }: { searchParams: { [key: string]: string | undefined } }) {
   const user = await currentUser();
   if (!user) return null;
 
-  const userInfo = await fetchUser(user.id);
+  const userInfo = await FetchUser(user.id);
   if (!userInfo?.onboarded) redirect('/onboarding');
 
   const result = await fetchCommunities({

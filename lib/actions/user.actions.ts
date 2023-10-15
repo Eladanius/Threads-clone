@@ -9,7 +9,7 @@ import User from '../models/user.model';
 
 import { connectToDB } from '../mongoose';
 
-export async function fetchUser(userId: string) {
+export async function FetchUser(userId: string) {
   try {
     connectToDB();
 
@@ -31,7 +31,7 @@ interface Params {
   path: string;
 }
 
-export async function updateUser({ userId, bio, name, path, username, image }: Params): Promise<void> {
+export async function UpdateUser({ userId, bio, name, path, username, image }: Params): Promise<void> {
   try {
     connectToDB();
 
@@ -55,7 +55,7 @@ export async function updateUser({ userId, bio, name, path, username, image }: P
   }
 }
 
-export async function fetchUserPosts(userId: string) {
+export async function FetchUserPosts(userId: string) {
   try {
     connectToDB();
 
@@ -88,7 +88,7 @@ export async function fetchUserPosts(userId: string) {
 }
 
 // Almost similar to Thead (search + pagination) and Community (search + pagination)
-export async function fetchUsers({
+export async function FetchUsers({
   userId,
   searchString = '',
   pageNumber = 1,
@@ -140,7 +140,7 @@ export async function fetchUsers({
   }
 }
 
-export async function getActivity(userId: string) {
+export async function GetActivity(userId: string) {
   try {
     connectToDB();
 

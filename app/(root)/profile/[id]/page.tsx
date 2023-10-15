@@ -5,13 +5,13 @@ import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 import Image from 'next/image';
 import ThreadsTab from '@/components/shared/ThreadsTab';
-import { fetchUser } from '@/lib/actions/user.actions';
+import { FetchUser } from '@/lib/actions/user.actions';
 
 export default async function Page({ params }: { params: { id: string } }) {
   const user = await currentUser();
   if (!user) return null;
 
-  const userInfo = await fetchUser(params.id);
+  const userInfo = await FetchUser(params.id);
 
   if (!userInfo?.onboarded) redirect('/onboarding');
 
